@@ -29,8 +29,7 @@ RUN \
   systemctl mask tmp.mount systemd-tmpfiles-setup.service && \
   /usr/bin/echo 'set mouse-=a' > ~/.vimrc && \
   ln -s /usr/bin/vim /usr/bin/vi && \
-  echo "alias ll='ls -l'" > /root/.bashrc && \
-  chmod 644 /root/.bashrc && chown root:root /root/.bashrc && \
+  echo "alias ll='ls -l'" >> /etc/bash.bashrc && \
   if [ ! -e /sbin/init ]; then ln -s /lib/systemd/systemd /sbin/init; fi
 
 VOLUME ["/sys/fs/cgroup", "/run"]
