@@ -29,7 +29,7 @@ RUN \
   systemctl mask tmp.mount systemd-tmpfiles-setup.service && \
   if [ ! -e /sbin/init ]; then ln -s /lib/systemd/systemd /sbin/init; fi
 
-RUN \
+#RUN \
   # Installing Other stuff
   # GEM_HOME="/tmp/verifier/gems" \
   # GEM_PATH="/tmp/verifier/gems" \
