@@ -29,9 +29,11 @@ RUN \
   echo 'root:root' |chpasswd && \
   sed -ri 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
 
-  # systemd stuff
+  # systemd & other stuff
   systemctl mask tmp.mount systemd-tmpfiles-setup.service && \
   systemctl enable sshd && \
+  /usr/bin/echo 'set mouse-=a' > ~/.vimrc && \
+  ln -s /usr/bin/vim /usr/bin/vi && \
   if [ ! -e /sbin/init ]; then ln -s /lib/systemd/systemd /sbin/init; fi
 
 EXPOSE 22
