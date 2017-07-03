@@ -34,6 +34,8 @@ RUN \
   systemctl enable sshd && \
   /usr/bin/echo 'set mouse-=a' > ~/.vimrc && \
   ln -s /usr/bin/vim /usr/bin/vi && \
+  echo "alias ll='ls -l'" > /root/.bashrc && \
+  chmod 644 /root/.bashrc && chown root:root /root/.bashrc && \
   if [ ! -e /sbin/init ]; then ln -s /lib/systemd/systemd /sbin/init; fi
 
 EXPOSE 22
