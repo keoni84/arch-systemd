@@ -12,7 +12,7 @@ RUN \
   pacman -Scc --noconfirm --noprogressbar --quiet && \
   echo 'root:root' |chpasswd && \
   sed -ri 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-  systemctl enable sshd && \
+  systemctl enable sshd
 
 EXPOSE 22
 VOLUME ["/sys/fs/cgroup", "/run"]
