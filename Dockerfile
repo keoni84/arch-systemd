@@ -25,23 +25,13 @@ RUN \
   pacman -Rs gcc make --noconfirm --noprogressbar && \
   pacman -Scc --noconfirm --noprogressbar --quiet && \
 
-  # systemd stuff
+  # systemd & other stuff
   systemctl mask tmp.mount systemd-tmpfiles-setup.service && \
+  /usr/bin/echo 'set mouse-=a' > ~/.vimrc && \
+  ln -s /usr/bin/vim /usr/bin/vi && \
+  echo "alias ll='ls -l'" > /root/.bashrc && \
+  chmod 644 /root/.bashrc && chown root:root /root/.bashrc && \
   if [ ! -e /sbin/init ]; then ln -s /lib/systemd/systemd /sbin/init; fi
-
-#RUN \
-  # Installing Other stuff
-  # GEM_HOME="/tmp/verifier/gems" \
-  # GEM_PATH="/tmp/verifier/gems" \
-  # GEM_CACHE="/tmp/verifier/gems/cache" \
-  # gem install busser --no-rdoc --no-ri \
-    #--no-format-executable -n /tmp/verifier/bin --no-user-install && \
-
-  # Busser plugins
-  # GEM_HOME="/tmp/verifier/gems" \
-  # GEM_PATH="/tmp/verifier/gems" \
-  # GEM_CACHE="/tmp/verifier/gems/cache" \
-  # gem install busser-serverspec serverspec --no-rdoc --no-ri --no-user-install
 
 VOLUME ["/sys/fs/cgroup", "/run"]
 CMD  ["/usr/lib/systemd/systemd"]
