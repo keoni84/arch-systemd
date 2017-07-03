@@ -26,7 +26,9 @@ RUN \
   pacman -Scc --noconfirm --noprogressbar --quiet && \
 
   # systemd & other stuff
-  systemctl mask tmp.mount systemd-tmpfiles-setup.service && \
+  systemctl mask tmp.mount systemd-tmpfiles-setup.service \
+  auditd.service display-manager.service plymouth-quit-wait.service \
+  plymouth-start.service syslog.service && \
   /usr/bin/echo 'set mouse-=a' > ~/.vimrc && \
   ln -s /usr/bin/vim /usr/bin/vi && \
   echo "alias ll='ls -l'" >> /etc/bash.bashrc && \
