@@ -31,6 +31,7 @@ RUN \
 
   # systemd stuff
   systemctl mask tmp.mount systemd-tmpfiles-setup.service && \
+  systemctl enable sshd && \
   if [ ! -e /sbin/init ]; then ln -s /lib/systemd/systemd /sbin/init; fi
 
 EXPOSE 22
