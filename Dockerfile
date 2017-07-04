@@ -8,7 +8,7 @@ ENV LANG=en_US.UTF-8
 ################################
 RUN \
   # Install & config ssh
-  pacman -S openssh --noconfirm --noprogressbar --quiet && \
+  pacman -S openssh wget lsof --noconfirm --noprogressbar --quiet && \
   pacman -Scc --noconfirm --noprogressbar --quiet && \
   echo 'root:root' |chpasswd && \
   sed -ri 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
