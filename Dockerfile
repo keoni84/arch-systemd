@@ -4,16 +4,15 @@ MAINTAINER keoni84 "keoni84@gmail.com"
 ENV LANG=en_US.UTF-8
 
 ################################
-# Install & Configure ssh
+# Install needed packages
 ################################
 RUN \
-  # Install & config ssh
-  pacman -S openssh wget lsof --noconfirm --noprogressbar --quiet && \
-  pacman -Scc --noconfirm --noprogressbar --quiet && \
-  echo 'root:root' |chpasswd && \
-  sed -ri 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-  systemctl enable sshd
+  pacman -S gcc glibc make wget unzip apache php gd traceroute php-apache \
+  autoconf openssl perl gettext net-snmp perl-net-snmp automake \
+  perl-io-socket-ssl perl-xml-simple --noconfirm --noprogressbar --quiet && \
+  pacman -Scc --noconfirm --noprogressbar --quiet
 
 EXPOSE 22
+EXPOSE 80
 VOLUME ["/sys/fs/cgroup", "/run"]
 CMD  ["/usr/lib/systemd/systemd"]
