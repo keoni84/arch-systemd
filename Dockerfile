@@ -1,4 +1,4 @@
-FROM keoni84/arch-systemd:latest
+FROM keoni84/arch-systemd:ssh
 MAINTAINER keoni84 "keoni84@gmail.com"
 
 ENV LANG=en_US.UTF-8
