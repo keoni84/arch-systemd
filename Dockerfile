@@ -4,7 +4,6 @@ MAINTAINER keoni84 "keoni84@gmail.com"
 ENV LANG=en_US.UTF-8
 
 COPY nagios.tgz /tmp/nagios.tgz
-COPY nagios.service /usr/lib/systemd/system/nagios.service
 
 ################################
 # Install needed packages
