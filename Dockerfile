@@ -9,8 +9,8 @@ COPY nagios.tgz /tmp/nagios.tgz
 # Install needed packages
 ################################
 RUN \
-pacman -S gcc glibc make wget unzip apache php gd traceroute php-apache \
-autoconf openssl perl gettext net-snmp perl-net-snmp automake \
+pacman -S gcc make unzip apache php gd traceroute php-apache \
+autoconf net-snmp perl-net-snmp automake \
 perl-io-socket-ssl perl-xml-simple --noconfirm --noprogressbar --quiet && \
 pacman -Scc --noconfirm --noprogressbar --quiet && \
 tar zxf /tmp/nagios.tgz -C /tmp && \
