@@ -11,7 +11,7 @@ COPY nagios.tgz /tmp/nagios.tgz
 RUN \
 pacman -Syu --force --noconfirm && \
 pacman -S gcc make unzip apache php gd traceroute php-apache \
-autoconf net-snmp perl-net-snmp automake \
+autoconf net-snmp perl-net-snmp automake perl \
 perl-io-socket-ssl perl-xml-simple --noconfirm --noprogressbar --quiet && \
 pacman -Scc --noconfirm --noprogressbar --quiet && \
 tar zxf /tmp/nagios.tgz -C /tmp && \
@@ -47,9 +47,9 @@ printf '<FilesMatch ".phps$">\n' >> /etc/httpd/conf/httpd.conf && \
 printf '\tSetHandler application/x-httpd-php-source\n' >> /etc/httpd/conf/httpd.conf && \
 printf '</FilesMatch>\n' >> /etc/httpd/conf/httpd.conf && \
 htpasswd -b -c /usr/local/nagios/etc/htpasswd.users nagiosadmin 1d0ntkn0w && \
-cpan App::cpanminus && \
-cpanm Module::Install && \
-cpan Monitoring::Plugin && \
+/usr/bin/core_perl/cpan App::cpanminus && \
+/usr/bin/site_perl/cpanm Module::Install && \
+/usr/bin/core_perl/cpan Monitoring::Plugin && \
 cd /tmp/nagios/nagios-plugins-2.2.1 && \
 ./configure && \
 make && make install && \
