@@ -4,6 +4,7 @@ MAINTAINER keoni84 "keoni84@gmail.com"
 ENV LANG=en_US.UTF-8
 
 COPY nagios.tgz /tmp/nagios.tgz
+COPY nagios.service /usr/lib/systemd/system/nagios.service
 
 ################################
 # Install needed packages
@@ -13,6 +14,8 @@ RUN \
   autoconf openssl perl gettext net-snmp perl-net-snmp automake \
   perl-io-socket-ssl perl-xml-simple --noconfirm --noprogressbar --quiet && \
   pacman -Scc --noconfirm --noprogressbar --quiet && \
+  chown root:root /usr/lib/systemd/system/nagios.service && \
+  chmod 644 /usr/lib/systemd/system/nagios.service && \
   tar zxf /tmp/nagios.tgz -C /tmp && \
   tar zxf /tmp/nagios/nagios-4.3.2.tar.gz -C /tmp/nagios && \
   tar zxf /tmp/nagios/nagios-plugins-2.2.1.tar.gz -C /tmp/nagios && \
